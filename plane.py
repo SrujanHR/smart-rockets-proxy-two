@@ -6,7 +6,7 @@ import time
 
  
 goal = [random.randint(50, 550), random.randint(0, 10)]
-print(goal)
+#print(goal)
 
 
 steps = 0
@@ -45,13 +45,13 @@ running = True
 
 while running:
         gen += 1
-        print(gen)
+        #print(gen)
         '''for p in triangles:
                  p[0] = 300
                  p[1] = 350'''
         pygame.event.get()
         st = time.time()
-        print(st)
+        #print(st)
 
         while time.time() < st + 10:
             # Poll for events
