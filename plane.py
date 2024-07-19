@@ -6,21 +6,21 @@ import time
 
  
 goal = [random.randint(50, 550), random.randint(0, 10)]
-#print(goal)
-
+print(goal)
+win= 0
 
 steps = 0
 
 gen = 0
 triangles = []
 ang=[]
-for g in range(5):
+for g in range(100):
             x = 300
             y = 350
             angle = random.randint(0,360)
             ang.append(angle)
 
-            color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+            color = [random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)]
             distance_travelled = 0
             global path
             path =[]
@@ -39,15 +39,18 @@ def create_triangle_surface(breadth, height, color):
         return surface
 
 pygame.init()
-screen = pygame.display.set_mode((600, 400))
+screen = pygame.display.set_mode((600, 400)
+)
 clock = pygame.time.Clock()
 running = True
 
 while running:
+
         gen += 1
-        #print(gen)
+        print('generation : ',gen)
+        #print(u)
         '''for p in triangles:
-                 p[0] = 300
+                 p[ 0] = 300
                  p[1] = 350'''
         pygame.event.get()
         st = time.time()
@@ -62,13 +65,18 @@ while running:
             # Fill the screen with black
             screen.fill((0, 0, 0))
             pygame.draw.circle(screen, (255, 255, 255), goal, 10)
+            pygame.draw.rect(screen, (255, 0, 0), pygame.Rect(0, 250, 300, 10))
+            pygame.draw.rect(screen, (255, 0, 0), pygame.Rect(300, 150, 300, 10))
+            text_surface = pygame.font.SysFont('Comic Sans MS', 20).render(f'Generation {gen}', False, (255, 255, 255))
+            screen.blit(text_surface, (0,350))
             
             # Render each triangle
             for m in range(len(triangles)):
                 x, y, angle, color, distance_travelled, path,steps= triangles[m]
                 speed = 2
                 # Update position
-
+                #time.sleep(0.01)
+                #print(pygame.mouse.get_pos())
                 if x >= 590:
                     x = 590
                     speed = 0
@@ -85,6 +93,25 @@ while running:
                     y = 10
                     speed = 0
                     color = (125, 125, 125)
+                #pygame.draw.rect(screen, (255, 0, 0), pygame.Rect(0, 250, 300, 10))
+                #pygame.draw.rect(screen, (255, 0, 0), pygame.Rect(300, 150, 300, 10))
+                if 0<x<300 and 250<y<260:
+                     x= x
+                     y = y
+                     speed = 0
+                     color = (125, 125, 125)
+                if 300<x<600 and 150<y<160:
+                     x= x
+                     y = y
+                     speed = 0
+                     color = (125, 125, 125)
+                if goal[0]-15<x<goal[0]+15 and goal[1]-15<y<goal[1]+15: 
+                     x= goal[0]+20
+                     y = goal[1]+20
+                     speed = 0
+                     color = (255, 255, 255)
+                     win += 1
+
                 if distance_travelled >=20:
                     #global s
 
@@ -120,7 +147,13 @@ while running:
             pygame.display.flip()
             clock.tick(60)  # Limits FPS to 60
         while time.time() < st + 11:
+            print('survivers : ', win,' Out of 100')
+            with open('plane.txt','a+') as f:
+                        f.writelines([str(gen),',',str(win),',',str(st),'\n'])
             
+            print()
+            #u = win
+            win = 0
             distances = []  # List to store distances and counts for each triangle
             count = -1
             for tri in triangles:
@@ -137,10 +170,14 @@ while running:
             #print(distances[-2]['count'])        
             a = triangles[distances[-1]['count']][5]
             b = triangles[distances[-2]['count']][5]
+            c = triangles[distances[-1]['count']][3]
+            d = triangles[distances[-2]['count']][3]
+            #print(c,d)
             #print()
             #print(a)
             #print(b)#      b)
             #print()
+            #triangles.append([x, y, angle, color, distance_travelled,path,steps])
             for i in triangles:
                 t = []
                 v = []
@@ -152,12 +189,23 @@ while running:
                     v.append([k[0],k[1]]) #print(k)
                     t.append( random.randint(k[0]-10,k[1]+10))
                     k = []
-                    g = list(str(t)+'\n')
-                with open('plane.txt','a+') as f:
-                        f.writelines(g)
+
                 #print(t)
                 #print()
                 i[5]=t
+                m = []
+                for z in range(0,3):
+                    n = [c[z],d[z]]
+                    n.sort()
+                    m.append(random.randint(n[0],n[1]))
+                #print(m)
+                i[3]=m
+                '''de = [c,d]
+                for m in de:
+                     for l in m:
+                          
+                        print(l)'''
+                    #i[3] = random.randint(de[0]-10,de[1]+10)
                 #print(i[5])
             #print()
             #print()
