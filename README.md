@@ -14,7 +14,7 @@ This repository is an updated version (v2) of a project initially created as a p
 
 ## Dependencies
 Python 3.11
-Pygame (install via pip install pygame)
+[Pygame](https://www.pygame.org/docs/) (install via pip install pygame)
 
 ## How to use :
 
