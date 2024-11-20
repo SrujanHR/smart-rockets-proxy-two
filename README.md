@@ -35,7 +35,7 @@ Contributions are welcome! If you have any ideas for improvements or features, f
 - [Repository - Smart-Rockets](https://github.com/Shivank1006/Smart-Rockets)
 
 ## Comment
-genetic algorithm and is a fun way to explore evolutionary algorithms and it os fun to impilment it in python.
+genetic algorithm is a fun way to explore evolutionary algorithms and it os fun to impilment it in python.
 I hope you like my project ;)
 
 
