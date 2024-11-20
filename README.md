@@ -23,14 +23,20 @@ Pygame (install via pip install pygame)
 3. Watch and enjoy as rockets evolve over generations to reach the target.
 
 ## code
-python main.py
+- [python main.py](https://github.com/SrujanHR/smart-rockets-proxy-two/blob/main/plane.py)
 
 
 ## Contributing
 Contributions are welcome! If you have any ideas for improvements or features, feel free to fork this repository and submit a pull request.
 
 
-Acknowledgments
-This project was inspired by the classic smart rockets genetic algorithm and is a fun way to explore evolutionary algorithms and simulation in Python.
+## Acknowledgments
+- This project was inspired by the classic [Smart Rockets - Genetic Algorithm Implementation codespace](https://shivank1006.github.io/Smart-Rockets/) 
+- [Repository - Smart-Rockets](https://github.com/Shivank1006/Smart-Rockets)
+
+## Comment
+genetic algorithm and is a fun way to explore evolutionary algorithms and it os fun to impilment it in python.
+I hope you like my project ;)
+
 
 
