@@ -23,7 +23,7 @@ Python 3.11
 3. Watch and enjoy as rockets evolve over generations to reach the target.
 
 ## code
-- [python main.py](https://github.com/SrujanHR/smart-rockets-proxy-two/blob/main/plane.py)
+- [plane.py](https://github.com/SrujanHR/smart-rockets-proxy-two/blob/main/plane.py)
 
 
 ## Contributing
