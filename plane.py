@@ -4,20 +4,25 @@ import math
 import time
 
 
- 
-goal = [random.randint(50, 550), random.randint(0, 10)]
+pygame.init()
+sb =16*110
+sh =9*110
+screen = pygame.display.set_mode((sb, sh))
+clock = pygame.time.Clock()
+running = True
+goal = [random.randint(50, (sb-50)//1), random.randint(0, 10)]
 print(goal)
 win= 0
 
 steps = 0
-
+#600,400
 gen = 0
 triangles = []
 ang=[]
 def birth (plane_count):
     for g in range(plane_count):
-                x = 300
-                y = 350
+                x = sb//2
+                y = sh*0.9
                 angle = random.randint(0,360)
                 ang.append(angle)
 
@@ -38,12 +43,6 @@ def create_triangle_surface(breadth, height, color):
         points = [(0, height), (breadth, height), (breadth / 2, 0)]
         pygame.draw.polygon(surface, color, points)
         return surface
-
-pygame.init()
-screen = pygame.display.set_mode((600, 400)
-)
-clock = pygame.time.Clock()
-running = True
 
 while running:
 
@@ -66,42 +65,43 @@ while running:
             # Fill the screen with black
             screen.fill((0, 0, 0))
             pygame.draw.circle(screen, (255, 255, 255), goal, 10)
-            pygame.draw.rect(screen, (255, 0, 0), pygame.Rect(0, 250, 300, 10))
-            pygame.draw.rect(screen, (255, 0, 0), pygame.Rect(300, 150, 300, 10))
+            pygame.draw.rect(screen, (255, 0, 0), pygame.Rect(0, int(sh*(2/3)), int(sb*6/10), 10))
+            pygame.draw.rect(screen, (255, 0, 0), pygame.Rect(int(sb*(4/10)), int(sh*(1/3)), int(sb*0.75), 10))
             text_surface = pygame.font.SysFont('Comic Sans MS', 20).render(f'Generation {gen}', False, (255, 255, 255))
-            screen.blit(text_surface, (0,350))
+            screen.blit(text_surface, (sb*0.01,sh*0.95))
             
             # Render each triangle
             for m in range(len(triangles)):
                 x, y, angle, color, distance_travelled, path,steps= triangles[m]
-                speed = 2
+                speed = 10
                 # Update position
                 #time.sleep(0.01)
                 #print(pygame.mouse.get_pos())
-                if x >= 590:
-                    x = 590
+
+                if x >= sb-10:
+                    x = sb-10
                     speed = 0
                     color = (125, 125, 125)
                 if x <= 10:
                     x = 10
                     speed = 0
                     color = (125, 125, 125)
-                if y >= 390:
-                    y = 390
+                if y >= sh-10:
+                    y = sh-10
                     speed = 0
                     color = (125, 125, 125)
                 if y <= 10:
                     y = 10
                     speed = 0
                     color = (125, 125, 125)
-                #pygame.draw.rect(screen, (255, 0, 0), pygame.Rect(0, 250, 300, 10))
-                #pygame.draw.rect(screen, (255, 0, 0), pygame.Rect(300, 150, 300, 10))
-                if 0<x<300 and 250<y<260:
-                     x= x
+                #pygame.draw.rect(screen, (255, 0, 0), pygame.Rect(0, , int(sb*6/10), 10))
+                #pygame.draw.rect(screen, (255, 0, 0), pygame.Rect(int(sb*(4/10)), int(sh*(1/3)), int(sb*0.75), 10))
+                if 0<x<int(sb*6/10) and int(sh*(2/3))-10<y<int(sh*(2/3))+10:
+                     x = x
                      y = y
                      speed = 0
                      color = (125, 125, 125)
-                if 300<x<600 and 150<y<160:
+                if int(sb*(4/10))<x<sb and int(sh*(1/3))-10<y<int(sh*(1/3))+10:
                      x= x
                      y = y
                      speed = 0
@@ -132,7 +132,7 @@ while running:
                 distance_travelled += 2
 
                 # Create and rotate the triangles[m] surface
-                breadth, height = 10, 20
+                breadth, height = 20, 40
                 triangle_surface = create_triangle_surface(breadth, height, color)
                 rotated_surface = pygame.transform.rotate(triangle_surface, angle)
                 rect = rotated_surface.get_rect(center=(x, y))
@@ -148,6 +148,7 @@ while running:
             # Update the display
             pygame.display.flip()
             clock.tick(60)  # Limits FPS to 60
+            #await asyncio.sleep(0)
         while time.time() < st + 11:
             print('survivers : ', win,' Out of 100')
             with open('plane.txt','a+') as f:
@@ -220,8 +221,10 @@ while running:
             
             s = triangles
             for p in triangles:
-                 p[0] = 300
-                 p[1] = 350
+                 #x = sb//2
+                 #y = sh*0.9
+                 p[0] = sb//2
+                 p[1] = sh*0.9
                  p[6] = 0
             pygame.display.update()
 
