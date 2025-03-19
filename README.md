@@ -12,7 +12,8 @@ This repository is an updated version (v2) of a project initially created as a p
 - Genetic Algorithm: Implements a genetic algorithm to tech rockets to reach a goal by trial and error
 - Pygame Visualization: Visualizes the simulation using Pygame for interactive display.
 
-
+## Web Demo on itch.io
+https://srujanhr.itch.io/smart-rockets-proxy-two-1
 ## Dependencies
 Python 3.11
 [Pygame](https://www.pygame.org/docs/) (install via pip install pygame)
