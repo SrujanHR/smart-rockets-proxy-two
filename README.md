@@ -1,6 +1,7 @@
 
 
-# Smart Rockets Genetic Algorithm Implementation trial v2
+# Smart Rockets Genetic Algorithm Implementation trial v2 [Web Demo](https://srujanhr.itch.io/smart-rockets-proxy-two-1)
+
 
 Welcome to the Smart Rockets Genetic Algorithm Implementation trial v2! This project is a Python implementation using Pygame, featuring a genetic algorithm for simulating smart rockets.
 
