@@ -10,7 +10,7 @@ sh =9*110
 screen = pygame.display.set_mode((sb, sh))
 clock = pygame.time.Clock()
 running = True
-goal = [random.randint(50, (sb-50)//1), random.randint(0, 10)]
+goal = [random.randint(50, (sb-50)//2), random.randint(10, 20)]
 print(goal)
 win= 0
 
@@ -190,7 +190,10 @@ while running:
                     k = [a[j],b[j]]
                     k.sort()
                     v.append([k[0],k[1]]) #print(k)
-                    t.append( random.randint(k[0]-3,k[1]+3))
+                    if k[0]+1 == k[1]-1 or k[0] == k[1] or k[0] == k[1]-1:
+                        t.append(k[0])
+                    else:
+                        t.append( random.randint(k[0]+1,k[1]-1))
                     k = []
 
                 #print(t)
